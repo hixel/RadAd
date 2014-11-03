@@ -1,10 +1,16 @@
 ﻿var radadApp = angular.module("radad", ["ngRoute"]);
 
-radadApp.controller("homeController", function($scope) {
+radadApp.controller("homeController", function($scope, $http, $window) {
     $scope.freq = 1;
-    $scope.test = { name: 'Igor' };
+    $scope.test = { name: '' };
 
     $scope.save = function() {
-        alert($scope.test.name);
+        $http.post("api/registration", $scope.test)
+            .then(function() {
+            },
+                function() {
+
+                }
+            );
     };
 });

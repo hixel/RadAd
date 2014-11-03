@@ -15,7 +15,15 @@
 </div>
 
 <div ng-controller="homeController">
-    <form ng-submit="save()">
+    <form name="testForm" novalidate ng-submit="save()">
+        
+        <input type="text" name="name" ng-model="test.name" required />
+        
+        <div class="panel panel-danger">
+            <span ng-show="testForm.name.$error.required">*</span>
+        </div>
+        <input type="submit" title="Ok" ng-disabled="testForm.$invalid" />
+ 
         <div class="row">
             <div class="col-lg-4">
                 <div class="row marginl15">
