@@ -14,270 +14,274 @@
     </div>
 </div>
 
-<div class="row" ng-controller="homeController">
-    <div class="col-lg-4">
-        <div class="row marginl15">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <p class="step"><strong>Ваш клиент выбирает продолжительность рекламного объявления</strong></p>
-                </div>
-
-                <div class="radio marginl15">
-                    <label class="">
-                        <input type="radio" name="rdDuration" />
-                        15 секунд
-                    </label>
-                </div>
-                <div class="radio marginl15">
-                    <label>
-                        <input type="radio" name="rdDuration" />
-                        20 секунд
-                    </label>
-                </div>
-                <div class="radio marginl15">
-                    <label>
-                        <input type="radio" name="rdDuration" />
-                        25 секунд
-                    </label>
-                </div>
-                <div class="radio marginl15">
-                    <label>
-                        <input type="radio" name="rdDuration" />
-                        30 секунд
-                    </label>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="col-lg-4">
-        <div class="row marginl15">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <p class="step"><strong>Ваш клиент выбирает время для рекламного объявления</strong></p>
-                </div>
-                
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <div class="col-md-3">
-                                <div class="icon-sun-center"></div>
-                            </div>
-                            <div class="col-md-9">
-                                <div>
-                                    <label class="marginr10">
-                                        <input type="checkbox" />
-                                        0:00 - 1:00
-                                    </label>
-                                </div>
-                                <div>
-                                    <label class="marginr10">
-                                        <input type="checkbox" />
-                                        1:00 - 2:00
-                                    </label>
-                                </div>
-                                <div>
-                                    <label class="marginr10">
-                                        <input type="checkbox" />
-                                        2:00 - 3:00
-                                    </label>
-                                </div>
-                                <div>
-                                    <label class="marginr10">
-                                        <input type="checkbox" />
-                                        3:00 - 4:00
-                                    </label>
-                                </div>
-                                <div>
-                                    <label class="marginr10">
-                                        <input type="checkbox" />
-                                        4:00 - 5:00
-                                    </label>
-                                </div>
-                                <div>
-                                    <label class="marginr10">
-                                        <input type="checkbox" />
-                                        5:00 - 6:00
-                                    </label>
-                                </div>
-                                <div>
-                                    <label class="marginr10">
-                                        <input type="checkbox" />
-                                        6:00 - 7:00
-                                    </label>
-                                </div>
-                                <div>
-                                    <label class="marginr10">
-                                        <input type="checkbox" />
-                                        7:00 - 8:00
-                                    </label>
-                                </div>
-                                <div>
-                                    <label class="marginr10">
-                                        <input type="checkbox" />
-                                        8:00 - 9:00
-                                    </label>
-                                </div>
-                                <div>
-                                    <label class="marginr10">
-                                        <input type="checkbox" />
-                                        9:00 - 10:00
-                                    </label>
-                                </div>
-                                <div>
-                                    <label class="marginr10">
-                                        <input type="checkbox" />
-                                        10:00 - 11:00
-                                    </label>
-                                </div>
-                                <div>
-                                    <label class="marginr10">
-                                        <input type="checkbox" />
-                                        11:00 - 12:00
-                                    </label>
-                                </div>
-                            </div>
+<div ng-controller="homeController">
+    <form ng-submit="save()">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="row marginl15">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <p class="step"><strong>Ваш клиент выбирает продолжительность рекламного объявления</strong></p>
                         </div>
 
-                        <div class="col-md-5">
-                            <div class="col-md-3">
-                                <div class="icon-moon-center"></div>
-                            </div>
-                            <div class="col-md-9">
-                                <div>
-                                    <label class="marginr10">
-                                        <input type="checkbox" />
-                                        12:00 - 1:00
-                                    </label>
-                                </div>
-                                <div>
-                                    <label class="marginr10">
-                                        <input type="checkbox" />
-                                        1:00 - 2:00
-                                    </label>
-                                </div>
-                                <div>
-                                    <label class="marginr10">
-                                        <input type="checkbox" />
-                                        2:00 - 3:00
-                                    </label>
-                                </div>
-                                <div>
-                                    <label class="marginr10">
-                                        <input type="checkbox" />
-                                        3:00 - 4:00
-                                    </label>
-                                </div>
-                                <div>
-                                    <label class="marginr10">
-                                        <input type="checkbox" />
-                                        4:00 - 5:00
-                                    </label>
-                                </div>
-                                <div>
-                                    <label class="marginr10">
-                                        <input type="checkbox" />
-                                        5:00 - 6:00
-                                    </label>
-                                </div>
-                                <div>
-                                    <label class="marginr10">
-                                        <input type="checkbox" />
-                                        6:00 - 7:00
-                                    </label>
-                                </div>
-                                <div>
-                                    <label class="marginr10">
-                                        <input type="checkbox" />
-                                        7:00 - 8:00
-                                    </label>
-                                </div>
-                                <div>
-                                    <label class="marginr10">
-                                        <input type="checkbox" />
-                                        8:00 - 9:00
-                                    </label>
-                                </div>
-                                <div>
-                                    <label class="marginr10">
-                                        <input type="checkbox" />
-                                        9:00 - 10:00
-                                    </label>
-                                </div>
-                                <div>
-                                    <label class="marginr10">
-                                        <input type="checkbox" />
-                                        10:00 - 11:00
-                                    </label>
-                                </div>
-                                <div>
-                                    <label class="marginr10">
-                                        <input type="checkbox" />
-                                        11:00 - 12:00
-                                    </label>
-                                </div>
-                            </div>
+                        <div class="radio marginl15">
+                            <label class="">
+                                <input type="radio" name="rdDuration" />
+                                15 секунд
+                            </label>
                         </div>
-                    </div>
-
-                    <div class="row margint15">
-
-                    </div>
-                    <div class="row marginl15 marginb15">
-                        <div class="col-md-4">
-                            <input type="range" ng-model="freq" min="1" max="5" step="1" />
+                        <div class="radio marginl15">
+                            <label>
+                                <input type="radio" name="rdDuration" />
+                                20 секунд
+                            </label>
                         </div>
-                        <div class="col-md-8">
-                            <span>Частота появления рекламы в эфире за 1 час: {{ freq }}</span>
+                        <div class="radio marginl15">
+                            <label>
+                                <input type="radio" name="rdDuration" />
+                                25 секунд
+                            </label>
+                        </div>
+                        <div class="radio marginl15">
+                            <label>
+                                <input type="radio" name="rdDuration" />
+                                30 секунд
+                            </label>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    
-    <div class="col-lg-4">
-        <div class="marginl15">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <p class="step"><strong>Загружает рекламный контент и оплачивает его</strong></p>
-                </div>
-                
-                <div class="panel-body">
-                    <div class="marginl15">
-                        <div class="margint15 marginb15">
-                            <span class="btn-sm btn-primary btn-file marginb15">
-                                Загрузить файл <input type="file" />
-                            </span>
+
+            <div class="col-lg-4">
+                <div class="row marginl15">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <p class="step"><strong>Ваш клиент выбирает время для рекламного объявления</strong></p>
                         </div>
 
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="col-md-3">
+                                        <div class="icon-sun-center"></div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div>
+                                            <label class="marginr10">
+                                                <input type="checkbox" />
+                                                0:00 - 1:00
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label class="marginr10">
+                                                <input type="checkbox" />
+                                                1:00 - 2:00
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label class="marginr10">
+                                                <input type="checkbox" />
+                                                2:00 - 3:00
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label class="marginr10">
+                                                <input type="checkbox" />
+                                                3:00 - 4:00
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label class="marginr10">
+                                                <input type="checkbox" />
+                                                4:00 - 5:00
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label class="marginr10">
+                                                <input type="checkbox" />
+                                                5:00 - 6:00
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label class="marginr10">
+                                                <input type="checkbox" />
+                                                6:00 - 7:00
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label class="marginr10">
+                                                <input type="checkbox" />
+                                                7:00 - 8:00
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label class="marginr10">
+                                                <input type="checkbox" />
+                                                8:00 - 9:00
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label class="marginr10">
+                                                <input type="checkbox" />
+                                                9:00 - 10:00
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label class="marginr10">
+                                                <input type="checkbox" />
+                                                10:00 - 11:00
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label class="marginr10">
+                                                <input type="checkbox" />
+                                                11:00 - 12:00
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
 
-                        <div class="row centered">
-                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                                <input type="hidden" name="cmd" value="_s-xclick">
-                                <input type="hidden" name="hosted_button_id" value="QP2J9GD4F4KV8">
-                                <input type="image" src="https://www.paypalobjects.com/en_US/RU/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                            </form>
+                                <div class="col-md-5">
+                                    <div class="col-md-3">
+                                        <div class="icon-moon-center"></div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div>
+                                            <label class="marginr10">
+                                                <input type="checkbox" />
+                                                12:00 - 1:00
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label class="marginr10">
+                                                <input type="checkbox" />
+                                                1:00 - 2:00
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label class="marginr10">
+                                                <input type="checkbox" />
+                                                2:00 - 3:00
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label class="marginr10">
+                                                <input type="checkbox" />
+                                                3:00 - 4:00
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label class="marginr10">
+                                                <input type="checkbox" />
+                                                4:00 - 5:00
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label class="marginr10">
+                                                <input type="checkbox" />
+                                                5:00 - 6:00
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label class="marginr10">
+                                                <input type="checkbox" />
+                                                6:00 - 7:00
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label class="marginr10">
+                                                <input type="checkbox" />
+                                                7:00 - 8:00
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label class="marginr10">
+                                                <input type="checkbox" />
+                                                8:00 - 9:00
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label class="marginr10">
+                                                <input type="checkbox" />
+                                                9:00 - 10:00
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label class="marginr10">
+                                                <input type="checkbox" />
+                                                10:00 - 11:00
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label class="marginr10">
+                                                <input type="checkbox" />
+                                                11:00 - 12:00
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row margint15">
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <input type="range" ng-model="freq" min="1" max="5" step="1" />
+                                </div>
+                                <div class="col-md-8">
+                                    <span>Частота появления рекламы в эфире за 1 час: {{ freq }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="marginl15">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <p class="step"><strong>Загружает рекламный контент и оплачивает его</strong></p>
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="marginl15">
+                                <div class="margint15 marginb15">
+                                    <span class="btn-sm btn-primary btn-file marginb15">
+                                        Загрузить файл <input type="file" />
+                                    </span>
+                                </div>
+
+
+                                <div class="row centered">
+                                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                        <input type="hidden" name="cmd" value="_s-xclick">
+                                        <input type="hidden" name="hosted_button_id" value="QP2J9GD4F4KV8">
+                                        <input type="image" src="https://www.paypalobjects.com/en_US/RU/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
-<div class="row centered">
-    <div class="col-md-4">
-    </div>
-    <div class="col-lg-2">
-        <input type="button" class="btn btn-success" value="Зарегистрироваться как радио" />
-    </div>
-    <div class="col-lg-2">
-        <input type="button" class="btn btn-success" value="Зарегистрироваться как клиент" />
-    </div>
-    <div class="col-md-4">
-    </div>
+        <div class="row centered">
+            <div class="col-md-4">
+            </div>
+            <div class="col-lg-2">
+                <input type="button" class="btn btn-success" value="Зарегистрироваться как радио" />
+            </div>
+            <div class="col-lg-2">
+                <input type="button" class="btn btn-success" value="Зарегистрироваться как клиент" />
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+    </form>
 </div>
 
 
