@@ -5,9 +5,12 @@ using System.Web.Routing;
 namespace WhiteBox.RadAd
 {
     using System.Web.Http;
+    using Kernel.Log;
 
     public class MvcApplication : System.Web.HttpApplication
     {
+        public static readonly BaseLog Log = new BaseLog();
+ 
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();

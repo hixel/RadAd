@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WhiteBox.RadAd.DbProvider")]
+[assembly: AssemblyTitle("WhiteBox.Kernel")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("MICROSOFT")]
-[assembly: AssemblyProduct("WhiteBox.RadAd.DbProvider")]
+[assembly: AssemblyProduct("WhiteBox.Kernel")]
 [assembly: AssemblyCopyright("Copyright © MICROSOFT 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("d2e0123d-98b1-4490-a8e7-11bc17c51c80")]
+[assembly: Guid("e7535234-9e3e-422b-a3b5-e2f536ebc9c4")]
 
 // Version information for an assembly consists of the following four values:
 //

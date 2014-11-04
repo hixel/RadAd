@@ -1,4 +1,4 @@
-﻿namespace WhiteBox.RadAd.DbProvider.Entity
+﻿namespace WhiteBox.Kernel.Entities
 {
     public interface IEntity
     {

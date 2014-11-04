@@ -1,11 +1,11 @@
-﻿namespace WhiteBox.RadAd.DbProvider.Repository
+﻿namespace WhiteBox.Kernel.Repository
 {
     using System;
     using System.Linq;
+    using Entities;
+    using Kernel;
     using NHibernate;
     using NHibernate.Linq;
-    using DbProvider;
-    using Entity;
 
     public class BaseRepository<T>
         where T : IEntity

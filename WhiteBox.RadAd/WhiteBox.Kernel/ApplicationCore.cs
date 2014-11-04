@@ -1,9 +1,10 @@
-﻿namespace WhiteBox.RadAd.DbProvider
+﻿namespace WhiteBox.Kernel
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
+    using App;
     using FluentNHibernate.Cfg;
     using NHibernate;
     using NHibernate.Cfg;
@@ -27,10 +28,21 @@
                     var configuration = new Configuration();
                     configuration.Configure();
 
-                    var cfg = Fluently.Configure(configuration)
-                        .Mappings(c => c.FluentMappings.AddFromAssembly(Assembly.GetExecutingAssembly()));
+                    var modules = AppDomain.CurrentDomain.GetAssemblies()
+                        .SelectMany(s => s.GetTypes())
+                        .Where(x => x.IsClass
+                                    && !x.IsAbstract
+                                    && typeof (IModule).IsAssignableFrom(x))
+                        .Select(x => Activator.CreateInstance(x) as IModule);
+                    foreach (var module in modules)
+                    {
+                        var loadedAssembly = Assembly.Load(module.GetAssembly().GetName().Name);
 
-                    sessionFactory = cfg.BuildConfiguration().BuildSessionFactory();
+                        var cfg = Fluently.Configure(configuration)
+                            .Mappings(c => c.FluentMappings.AddFromAssembly(loadedAssembly));
+
+                        sessionFactory = cfg.BuildConfiguration().BuildSessionFactory();
+                    }
                 }
 
                 return sessionFactory;

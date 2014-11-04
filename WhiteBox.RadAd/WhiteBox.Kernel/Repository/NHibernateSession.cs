@@ -1,7 +1,7 @@
-﻿namespace WhiteBox.RadAd.DbProvider.Repository
+﻿namespace WhiteBox.Kernel.Repository
 {
+    using Kernel;
     using NHibernate;
-    using DbProvider;
 
     public class NHibernateSession
     {
