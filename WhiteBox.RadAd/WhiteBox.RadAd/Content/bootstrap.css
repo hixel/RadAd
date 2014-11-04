@@ -6348,6 +6348,9 @@ h1.white, p.lead {
 .marginb15 {
     margin-bottom: 15px;
 }
+div.file {
+    text-align: center; overflow: hidden; width: 100px; height: 50px; border: 1px solid #038f1a; background-color: #038f1a;
+}
 .btn-file input[type=file] {
     position: absolute;
     top: 0;

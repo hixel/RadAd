@@ -1,20 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Http;
 
 namespace WhiteBox.RadAd
 {
+    using System.Net.Http.Formatting;
+    using Newtonsoft.Json.Serialization;
+
     public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)
         {
-			config.MapHttpAttributeRoutes();
+            var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
+            jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
             config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                "DefaultApi",
+                "api/{controller}/{id}",
+                new { id = RouteParameter.Optional }
             );
         }
     }

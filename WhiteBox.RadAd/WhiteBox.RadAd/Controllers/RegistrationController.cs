@@ -2,11 +2,15 @@
 
 namespace WhiteBox.RadAd.Controllers
 {
+    using System.Net;
+    using System.Net.Http;
+    using Models.Registration;
+
     public class RegistrationController : ApiController
     {
-        public void Post()
+        public HttpResponseMessage Post([FromBody] RegistrationClientModel value)
         {
-            return;
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
     }
 }
