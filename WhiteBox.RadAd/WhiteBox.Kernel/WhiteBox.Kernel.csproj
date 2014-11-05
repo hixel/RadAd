@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="ApplicationCore.cs" />
     <Compile Include="App\BaseModule.cs" />
+    <Compile Include="App\AssemblyHelper.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Log\BaseLog.cs" />

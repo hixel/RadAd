@@ -8,23 +8,26 @@
     using System.Net.Http;
     using System.Reflection;
     using System.Web.Http;
-    using Entities.Migration;
+    using FluentNHibernate.Cfg;
+    using Kernel.App;
     using Kernel.Repository;
+    using Migrator.Framework;
     using Models.Migration;
 
     public class MigrationController : ApiController
     {
-        public IEnumerable<MigrationModel> Get()
+        public MigrationModel Get()
         {
-            var migrationRepository = new BaseRepository<Migration>();
+            var model = new MigrationModel();
 
-            var result = migrationRepository.GetAll()
-                .Select(x => new MigrationModel
-                {
-                    Version = x.Version
-                });
+            var migrationRepository = new BaseRepository<Entities.Migration.Migration>();
 
-            return result;
+            model.ProducedMigrations = migrationRepository.GetAll()
+                .Select(x => x.Version)
+                .AsEnumerable();
+            model.AvailableMigrations = AvailableMigrationList();
+
+            return model;
         }
 
         public HttpResponseMessage Post([FromBody] MigrationModel model)
@@ -35,7 +38,7 @@
                                 "PostgreSQL",
                                 ConfigurationManager.ConnectionStrings["NHibernate.connectionString"].ToString(),
                                 Assembly.GetExecutingAssembly());
-
+                
                 migrator.MigrateTo(model.Version);
             }
             catch (Exception e)
@@ -45,6 +48,26 @@
             }
             
             return Request.CreateResponse(HttpStatusCode.OK);
+        }
+
+        private IList<long> AvailableMigrationList()
+        {
+            List<long> list = new List<long>();
+
+            var modules = AssemblyHelper.GetModules();
+            foreach (var module in modules)
+            {
+                foreach (var type in module.GetType().Assembly.GetExportedTypes())
+                {
+                    var attribute = Attribute.GetCustomAttribute(type, typeof(MigrationAttribute)) as MigrationAttribute;
+                    if (attribute != null && typeof(IMigration).IsAssignableFrom(type) && !attribute.Ignore)
+                    {
+                        list.Add(attribute.Version);
+                    }
+                }
+            }
+
+            return list;
         }
     }
 }

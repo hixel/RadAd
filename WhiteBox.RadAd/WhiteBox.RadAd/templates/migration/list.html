@@ -1,0 +1,48 @@
+﻿<div ng-controller="migrationController">
+    <div class="marginl15 margint25">
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Менеджер миграций</strong>
+            </div>
+
+            <div class="panel-body marginl15 marginr15">
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>Проведенные миграции</strong>
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="alert alert-warning col-md-6" ng-show="migrations.producedMigrations.length == 0">
+                                Миграции не проводились
+                            </div>
+                            <ul ng-repeat="migration in migrations.producedMigrations">
+                                <li>Номер версии {{ migration }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>Доступные миграции</strong>
+                        </div>
+
+                        <div class="panel-body">
+                            <ul ng-repeat="migration in migrations.availableMigrations">
+                                <li>Номер версии {{ migration }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+
+
+    </div>
+    
+</div>

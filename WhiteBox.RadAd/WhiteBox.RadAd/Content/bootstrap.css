@@ -11,9 +11,12 @@ html {
   font-family: "OpenSans",Helvetica,Arial,sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  position: relative;
+  min-height: 100%;
 }
 body {
   margin: 0;
+  margin-bottom: 60px;
 }
 article,
 aside,
@@ -6304,12 +6307,6 @@ legend {
 h1.white, p.lead {
     color: #002645;
 }
-.marginr10 {
-    margin-right: 10px;
-}
-.marginl15 {
-    margin-left: 15px;
-}
 .icon-sun {
     width: 48px;
     height: 48px;
@@ -6342,8 +6339,26 @@ h1.white, p.lead {
 .clear {
     clear: both;
 }
+.marginr10 {
+    margin-right: 10px;
+}
+.marginr15 {
+    margin-right: 15px;
+}
+.marginl15 {
+    margin-left: 15px;
+}
+.margint10 {
+    margin-top: 10px;
+}
 .margint15 {
     margin-top: 15px;
+}
+.margint20 {
+    margin-top: 20px;
+}
+.margint25 {
+    margin-top: 25px;
 }
 .marginb15 {
     margin-bottom: 15px;
@@ -6364,4 +6379,12 @@ div.file {
     background: white;
     cursor: inherit;
     display: block;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
 }

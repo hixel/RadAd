@@ -28,12 +28,7 @@
                     var configuration = new Configuration();
                     configuration.Configure();
 
-                    var modules = AppDomain.CurrentDomain.GetAssemblies()
-                        .SelectMany(s => s.GetTypes())
-                        .Where(x => x.IsClass
-                                    && !x.IsAbstract
-                                    && typeof (IModule).IsAssignableFrom(x))
-                        .Select(x => Activator.CreateInstance(x) as IModule);
+                    var modules = AssemblyHelper.GetModules();
                     foreach (var module in modules)
                     {
                         var loadedAssembly = Assembly.Load(module.GetAssembly().GetName().Name);
@@ -54,12 +49,5 @@
             return sessionFactory.OpenSession();
         }
 
-        public IEnumerable<Assembly> GetAssemblies()
-        {
-            return AppDomain
-                .CurrentDomain
-                .GetAssemblies()
-                .Where(x => !x.IsDynamic);
-        }
     }
 }
