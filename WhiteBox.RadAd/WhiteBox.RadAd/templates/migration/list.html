@@ -1,23 +1,32 @@
-﻿<div ng-controller="migrationController">
+﻿<div class="col-lg-6 col-lg-offset-3">
     <div class="marginl15 margint25">
-        
+
         <div class="panel panel-default">
             <div class="panel-heading">
                 <strong>Менеджер миграций</strong>
             </div>
 
-            <div class="panel-body marginl15 marginr15">
+            <div class="panel-body marginl15 marginr15" ng-show="!loaded">
+                <div class="col-md-4">
+                    <p>Загрузка миграций...</p>
+                    <div class="progress progress-striped active">
+                        <div class="progress-bar" style="width: 100%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body marginl15 marginr15" ng-show="loaded">
                 <div class="row">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <strong>Проведенные миграции</strong>
+                            <strong>Проведенные миграции {{ t }}</strong>
                         </div>
 
                         <div class="panel-body">
-                            <div class="alert alert-warning col-md-6" ng-show="migrations.producedMigrations.length == 0">
+                            <div class="alert alert-warning col-md-6" ng-show="migrationInfo.producedMigrations.length == 0">
                                 Миграции не проводились
                             </div>
-                            <ul ng-repeat="migration in migrations.producedMigrations">
+                            <ul ng-repeat="migration in migrationInfo.producedMigrations">
                                 <li>Номер версии {{ migration }}</li>
                             </ul>
                         </div>
@@ -30,19 +39,39 @@
                             <strong>Доступные миграции</strong>
                         </div>
 
-                        <div class="panel-body">
-                            <ul ng-repeat="migration in migrations.availableMigrations">
-                                <li>Номер версии {{ migration }}</li>
-                            </ul>
+                        <div class="panel-body" ng-show="provided != undefined && !provided">
+                            <div class="col-md-4">
+                                <p>Проведение миграции...</p>
+                                <div class="progress progress-striped active">
+                                    <div class="progress-bar" style="width: 100%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel-body" ng-show="provided == undefined || provided">
+                            <div class="btn-group">
+                                <div class="btn-group open">
+                                    <label>
+                                        Провести миграцию на версию:
+                                        <select class="btn btn-default" ng-options="version for version in migrationInfo.availableMigrations"
+                                                ng-init="version = ''"
+                                                ng-model="version"></select>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="centered marginb15">
+                                <input type="button" class="btn btn-success" value="Совершить миграцию" ng-click="provide()" />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
 
         </div>
 
 
     </div>
-    
+
 </div>

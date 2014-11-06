@@ -212,6 +212,7 @@
     </Compile>
     <Compile Include="Map\Migration\MigrationMap.cs" />
     <Compile Include="Migrations\Migration_1.cs" />
+    <Compile Include="Migrations\Version_20141106\Migration_20141106.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Migration\MigrationModel.cs" />

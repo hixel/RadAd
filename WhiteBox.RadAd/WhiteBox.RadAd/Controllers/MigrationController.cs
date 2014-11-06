@@ -38,7 +38,7 @@
                                 "PostgreSQL",
                                 ConfigurationManager.ConnectionStrings["NHibernate.connectionString"].ToString(),
                                 Assembly.GetExecutingAssembly());
-                
+
                 migrator.MigrateTo(model.Version);
             }
             catch (Exception e)

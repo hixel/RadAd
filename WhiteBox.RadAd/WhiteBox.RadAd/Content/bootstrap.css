@@ -893,7 +893,7 @@ html {
 }
 body {
   font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.42857143;
   color: #333333;
   background-color: #ffffff;
@@ -2726,7 +2726,7 @@ select[multiple].input-lg {
   border: 1px solid transparent;
   white-space: nowrap;
   padding: 8px 12px;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.42857143;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -6387,4 +6387,7 @@ div.file {
   /* Set the fixed height of the footer here */
   height: 60px;
   background-color: #f5f5f5;
+}
+.loader {
+    width: 190px;
 }
