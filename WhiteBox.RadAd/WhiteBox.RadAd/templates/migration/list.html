@@ -46,24 +46,38 @@
                                     <div class="progress-bar" style="width: 100%"></div>
                                 </div>
                             </div>
+                            
+                            <h1>Messages</h1>
+                            <ul>
+                                <li ng-repeat="message in messages">{{ message }}</li>
+                            </ul>
                         </div>
+                        
+                        <form name="migrationForm" novalidate ng-submit="provide()">
+                            <div class="panel-body" ng-show="provided == undefined || provided">
+                                <div class="btn-group"
+                                     ng-class="{ 'error-required' : migrationForm.version.$error.required }">
+                                    <div class="btn-group open">
+                                        <label>
+                                            Провести миграцию на версию:
+                                            <select ng-options="version for version in migrationInfo.availableMigrations"
+                                                    name="version"
+                                                    ng-init="version = ''"
+                                                    required
+                                                    class="btn btn-default"
+                                                    ng-model="version"></select>
+                                        </label>
 
-                        <div class="panel-body" ng-show="provided == undefined || provided">
-                            <div class="btn-group">
-                                <div class="btn-group open">
-                                    <label>
-                                        Провести миграцию на версию:
-                                        <select class="btn btn-default" ng-options="version for version in migrationInfo.availableMigrations"
-                                                ng-init="version = ''"
-                                                ng-model="version"></select>
-                                    </label>
+                                    </div>
+
+                                </div>
+                                <div class="centered margint10 marginb15">
+                                    <input type="submit" class="btn btn-success" value="Провести миграцию"
+                                           ng-disabled="migrationForm.$invalid" />
                                 </div>
                             </div>
-
-                            <div class="centered marginb15">
-                                <input type="button" class="btn btn-success" value="Совершить миграцию" ng-click="provide()" />
-                            </div>
-                        </div>
+                        </form>
+                        
                     </div>
                 </div>
             </div>

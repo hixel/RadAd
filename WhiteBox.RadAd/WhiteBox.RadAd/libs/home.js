@@ -15,9 +15,18 @@ radadApp.config(function ($routeProvider) {
         .otherwise({ redirectTo: "/home" });
 });
 
-radadApp.factory("migrationService", function($http, $q) {
-    var migrations = {};
+radadApp.factory("migrationService", function ($http, $q, $timeout) {
     
+    var getMessages = function () {
+        var deferred = $q.defer();
+
+        $timeout(function () {
+            deferred.resolve(['Hello', 'world']);
+        }, 2000);
+
+        return deferred.promise;
+    };
+
     var getMigrations = function () {
 
         var deferred = $q.defer();
@@ -25,8 +34,7 @@ radadApp.factory("migrationService", function($http, $q) {
         $http.get("/api/migration")
             .then(
                 function(result) {
-                    migrations = result.data;
-                    deferred.resolve();
+                    deferred.resolve(result.data);
                 },
                 function() {
                     deferred.reject();
@@ -35,13 +43,9 @@ radadApp.factory("migrationService", function($http, $q) {
         return deferred.promise;
     };
 
-    var internalGetMigration = function() {
-        return migrations;
-    };
-    
     return {
-        migrations: internalGetMigration,
-        getMigrations: getMigrations
+        getMigrations: getMigrations,
+        getMessages: getMessages
     };
 });
 
@@ -65,16 +69,15 @@ radadApp.controller("homeController", function($scope, $http) {
 radadApp.controller("migrationController", function ($scope, migrationService, $http, $route) {
     $scope.loaded = false;
     $scope.provided = null;
-    $scope.migrationInfo = {};
-    
+
     migrationService.getMigrations()
-        .then(function () {
-            $scope.migrationInfo = migrationService.migrations();
+        .then(function (result) {
+            $scope.migrationInfo = result;
         })
         .then(function() {
             $scope.loaded = true;
         });
-    
+
     $scope.provide = function () {
         $scope.provided = false;
         
