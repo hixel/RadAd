@@ -1011,6 +1011,8 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="templates\home\index.html" />
     <Content Include="templates\migration\list.html" />
+    <Content Include="templates\registration\client-registration.js" />
+    <Content Include="templates\registration\radio-registration.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
