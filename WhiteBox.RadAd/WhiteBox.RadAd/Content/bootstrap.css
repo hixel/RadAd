@@ -1107,7 +1107,7 @@ p {
 }
 @media (min-width: 768px) {
   .lead {
-    font-size: 24px;
+    font-size: 20px;
   }
 }
 small,
@@ -6388,7 +6388,6 @@ div.file {
   position: absolute;
   bottom: 0;
   width: 100%;
-  /* Set the fixed height of the footer here */
   height: 60px;
   background-color: #f5f5f5;
 }
@@ -6398,4 +6397,9 @@ div.file {
 div.error-required {
     background-color: #f9ffe3;
     padding: 5px;
+}
+.divider-vertical {
+    margin-top: 15px;
+    border-left: 1px solid #aaa; 
+    height: 100%;
 }

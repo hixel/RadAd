@@ -12,31 +12,25 @@ radadApp.config(function ($routeProvider) {
             templateUrl: "/templates/migration/list.html"
         })
     
+        .when("/registration", {
+            controller: "registrationController",
+            templateUrl: "/templates/registration/choice-registration.html"
+        })
+    
         .otherwise({ redirectTo: "/home" });
 });
 
-radadApp.factory("migrationService", function ($http, $q, $timeout) {
-    
-    var getMessages = function () {
-        var deferred = $q.defer();
-
-        $timeout(function () {
-            deferred.resolve(['Hello', 'world']);
-        }, 2000);
-
-        return deferred.promise;
-    };
-
+radadApp.factory("migrationService", function ($http, $q) {
     var getMigrations = function () {
 
         var deferred = $q.defer();
 
         $http.get("/api/migration")
             .then(
-                function(result) {
+                function (result) {
                     deferred.resolve(result.data);
                 },
-                function() {
+                function () {
                     deferred.reject();
                 });
 
@@ -44,8 +38,7 @@ radadApp.factory("migrationService", function ($http, $q, $timeout) {
     };
 
     return {
-        getMigrations: getMigrations,
-        getMessages: getMessages
+        getMigrations: getMigrations
     };
 });
 
@@ -91,4 +84,9 @@ radadApp.controller("migrationController", function ($scope, migrationService, $
                 $scope.provided = true;
             });
     }
+});
+
+radadApp.controller("registrationController", function ($scope, $http, $route) {
+    $scope.loaded = false;
+    $scope.provided = null;
 });
