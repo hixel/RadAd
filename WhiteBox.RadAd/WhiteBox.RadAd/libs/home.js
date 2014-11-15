@@ -17,10 +17,21 @@ radadApp.config(function ($routeProvider) {
             templateUrl: "/templates/registration/choice-registration.html"
         })
     
+        .when("/registration-radio", {
+            controller: "registrationController",
+            templateUrl: "/templates/registration/registration-radio.html"
+        })
+    
+        .when("/registration-client", {
+            controller: "registrationController",
+            templateUrl: "/templates/registration/registration-client.html"
+        })
+    
         .otherwise({ redirectTo: "/home" });
 });
 
 radadApp.factory("migrationService", function ($http, $q) {
+    
     var getMigrations = function () {
 
         var deferred = $q.defer();
@@ -37,8 +48,72 @@ radadApp.factory("migrationService", function ($http, $q) {
         return deferred.promise;
     };
 
+    var provideMigration = function(version) {
+        var deferred = $q.defer();
+
+        $http.post("/api/migration", { version: version })
+            .then(
+                function() {
+                    deferred.resolve();
+                },
+                function() {
+                    deferred.reject();
+                });
+
+        return deferred.promise;
+    };
+    
     return {
-        getMigrations: getMigrations
+        getMigrations: getMigrations,
+        provideMigration: provideMigration
+    };
+});
+
+radadApp.factory("registrationService", function ($http, $q) {
+    var registrateRadio = function (registrateRadioModel) {
+
+        var deferred = $q.defer();
+
+        $http.post("/api/registrateradio", registrateRadioModel)
+            .then(
+                function (result) {
+                    deferred.resolve(result.data);
+                },
+                function () {
+                    deferred.reject();
+                });
+
+        return deferred.promise;
+    };
+
+    return {
+        registrateRadio: registrateRadio
+    };
+});
+
+radadApp.directive('passwordVerify', function () {
+    return {
+        restrict: 'A',
+        require: '?ngModel',
+        link: function(scope, elem, attrs, ngModel) {
+            if (!ngModel) return;
+
+            scope.$watch(attrs.ngModel, function() {
+                validate();
+            });
+
+            attrs.$observe('passwordVerify', function () {
+                validate();
+            });
+
+            var validate = function() {
+
+                var val1 = ngModel.$viewValue;
+                var val2 = attrs.passwordVerify;
+
+                ngModel.$setValidity('passwordVerify', !val1 || !val2 || val1 === val2);
+            };
+        }
     };
 });
 
@@ -71,22 +146,28 @@ radadApp.controller("migrationController", function ($scope, migrationService, $
             $scope.loaded = true;
         });
 
-    $scope.provide = function () {
+    $scope.provide = function() {
         $scope.provided = false;
-        
-        $http.post("/api/migration", { version: $scope.version })
-        .then(
-            function (result) {
-                $scope.provided = true;
-                $route.reload();
-            },
-            function () {
-                $scope.provided = true;
-            });
-    }
+
+        migrationService.provideMigration($scope.version)
+            .then(
+                function() {
+                    $scope.provided = true;
+                    $route.reload();
+                },
+                function() {
+                    $scope.provided = true;
+                });
+    };
 });
 
-radadApp.controller("registrationController", function ($scope, $http, $route) {
-    $scope.loaded = false;
-    $scope.provided = null;
+radadApp.controller("registrationController", function ($scope, registrationService, $route, $http) {
+    $scope.result = {};
+
+    $scope.registrateRadio = function() {
+        registrationService.registrateRadio($scope.registration)
+            .then(function(result) {
+                $scope.result = result;
+            });
+    };
 });

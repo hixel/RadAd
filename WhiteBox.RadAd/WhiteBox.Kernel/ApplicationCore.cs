@@ -34,7 +34,11 @@
                         var loadedAssembly = Assembly.Load(module.GetAssembly().GetName().Name);
 
                         var cfg = Fluently.Configure(configuration)
-                            .Mappings(c => c.FluentMappings.AddFromAssembly(loadedAssembly));
+                            .Mappings(c =>
+                            {
+                                c.FluentMappings.Conventions.Add<EnumConvention>();
+                                c.FluentMappings.AddFromAssembly(loadedAssembly);
+                            });
 
                         sessionFactory = cfg.BuildConfiguration().BuildSessionFactory();
                     }
