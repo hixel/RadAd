@@ -9,5 +9,9 @@
         public string Password { get; set; }
 
         public string ConfirmPassword { get; set; }
+
+        public string Captcha { get; set; }
+
+        public string CaptchaToken { get; set; }
     }
 }

@@ -8,6 +8,9 @@ using WhiteBox.RadAd.Models;
 
 namespace WhiteBox.RadAd.Controllers
 {
+    using CaptchaMvc.Infrastructure;
+    using CaptchaMvc.Models;
+
     [Authorize]
     public class AccountController : Controller
     {
@@ -303,6 +306,18 @@ namespace WhiteBox.RadAd.Controllers
             var linkedAccounts = UserManager.GetLogins(User.Identity.GetUserId());
             ViewBag.ShowRemoveButton = HasPassword() || linkedAccounts.Count > 1;
             return (ActionResult)PartialView("_RemoveAccountPartial", linkedAccounts);
+        }
+
+        [AllowAnonymous, HttpPost]
+        public JsonResult JsonCaptchaInit()
+        {
+            var parameterLength = new ParameterModel(DefaultCaptchaManager.LengthAttribute, 5);
+            var parameters = new ParameterModelContainer(new[] { parameterLength });
+            var info = CaptchaUtils.CaptchaManager.GenerateNew(this, parameters);
+
+            
+
+            return Json(new { imageUrl = info.ImageUrl, tokenValue = info.TokenValue });
         }
 
         protected override void Dispose(bool disposing)

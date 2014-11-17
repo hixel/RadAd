@@ -7,7 +7,7 @@
             </div>
 
             <div class="panel-body marginl15 marginr15" ng-show="!loaded">
-                <div class="col-md-4">
+                <div class="col-md-12">
                     <p>Загрузка миграций...</p>
                     <div class="progress progress-striped active">
                         <div class="progress-bar" style="width: 100%"></div>
@@ -27,7 +27,7 @@
                                 Миграции не проводились
                             </div>
                             <ul ng-repeat="migration in migrationInfo.producedMigrations">
-                                <li>Номер версии {{ migration }}</li>
+                                <li>Номер версии <strong>{{ migration }}</strong></li>
                             </ul>
                         </div>
                     </div>

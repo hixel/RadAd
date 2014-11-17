@@ -2,17 +2,17 @@
 {
     using System;
     using System.Net;
-    using System.Net.Http;
-    using System.Web.Http;
+    using System.Web.Mvc;
+    using CaptchaMvc.Infrastructure;
     using Entities.User;
     using Kernel.DataResult.Impl;
     using Kernel.Extensions;
     using Kernel.Repository;
     using Models.Registration;
 
-    public class RegistrateRadioController : ApiController
+    public class RegistrationController : Controller
     {
-        public BaseDataResult Post([FromBody] RegistrateRadioModel model)
+        public BaseDataResult RegistrateRadio(RegistrateRadioModel model)
         {
             try
             {
@@ -23,6 +23,14 @@
                     return BaseDataResult.Success();
                 }
 
+                var captchaValue = CaptchaUtils.CaptchaManager.StorageProvider
+                             .GetValue(model.CaptchaToken, CaptchaMvc.Interface.TokenType.Validation);
+
+                if (captchaValue == null || !captchaValue.IsEqual(model.Captcha))
+                {
+                    return BaseDataResult.Fail("Некорректная капча");
+                }
+                
                 var newUser = new User
                 {
                     Login = model.Login,
@@ -43,5 +51,5 @@
                 return BaseDataResult.Fail(HttpStatusCode.InternalServerError);
             }
         }
-    }
+	}
 }

@@ -36,7 +36,7 @@ radadApp.factory("migrationService", function ($http, $q) {
 
         var deferred = $q.defer();
 
-        $http.get("/api/migration")
+        $http.get("/migration/getmigrations")
             .then(
                 function (result) {
                     deferred.resolve(result.data);
@@ -51,7 +51,7 @@ radadApp.factory("migrationService", function ($http, $q) {
     var provideMigration = function(version) {
         var deferred = $q.defer();
 
-        $http.post("/api/migration", { version: version })
+        $http.post("/migration/providemigration", { version: version })
             .then(
                 function() {
                     deferred.resolve();
@@ -74,7 +74,7 @@ radadApp.factory("registrationService", function ($http, $q) {
 
         var deferred = $q.defer();
 
-        $http.post("/api/registrateradio", registrateRadioModel)
+        $http.post("/registration/registrateradio", registrateRadioModel)
             .then(
                 function (result) {
                     deferred.resolve(result.data);
@@ -163,11 +163,23 @@ radadApp.controller("migrationController", function ($scope, migrationService, $
 
 radadApp.controller("registrationController", function ($scope, registrationService, $route, $http) {
     $scope.result = {};
-
+    $scope.registration = {};
+    
     $scope.registrateRadio = function() {
         registrationService.registrateRadio($scope.registration)
             .then(function(result) {
                 $scope.result = result;
             });
     };
+    
+    $scope.updateCaptchaCall = function () {
+        $http.post('/Account/JsonCaptchaInit')
+            .success(function (data) {
+                $scope.registration.captchaImageUrl = data.imageUrl;
+                $scope.registration.captchaToken = data.tokenValue;
+                $scope.registration.captcha = '';
+            });
+    };
+    
+    $scope.updateCaptchaCall();
 });

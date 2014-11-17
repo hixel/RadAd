@@ -6403,3 +6403,8 @@ div.error-required {
     border-left: 1px solid #aaa; 
     height: 100%;
 }
+.refresh-captcha {
+    position: relative;
+    right: 22px;
+    top: 7px;
+}

@@ -5,18 +5,17 @@
     using System.Configuration;
     using System.Linq;
     using System.Net;
-    using System.Net.Http;
     using System.Reflection;
-    using System.Web.Http;
-    using FluentNHibernate.Cfg;
+    using System.Web.Mvc;
     using Kernel.App;
+    using Kernel.DataResult.Impl;
     using Kernel.Repository;
     using Migrator.Framework;
     using Models.Migration;
 
-    public class MigrationController : ApiController
+    public class MigrationController : Controller
     {
-        public MigrationModel Get()
+        public BaseDataResult GetMigrations()
         {
             var model = new MigrationModel();
 
@@ -27,10 +26,10 @@
                 .AsEnumerable();
             model.AvailableMigrations = AvailableMigrationList();
 
-            return model;
+            return BaseDataResult.Success(model);
         }
 
-        public HttpResponseMessage Post([FromBody] MigrationModel model)
+        public BaseDataResult ProvideMigration(MigrationModel model)
         {
             try
             {
@@ -44,15 +43,15 @@
             catch (Exception e)
             {
                 MvcApplication.Log.Error("", e);
-                return Request.CreateResponse(HttpStatusCode.InternalServerError);
+                return BaseDataResult.Fail(HttpStatusCode.InternalServerError);
             }
-            
-            return Request.CreateResponse(HttpStatusCode.OK);
+
+            return BaseDataResult.Success();
         }
 
-        private IList<long> AvailableMigrationList()
+        private IEnumerable<long> AvailableMigrationList()
         {
-            List<long> list = new List<long>();
+            var list = new List<long>();
 
             var modules = AssemblyHelper.GetModules();
             foreach (var module in modules)

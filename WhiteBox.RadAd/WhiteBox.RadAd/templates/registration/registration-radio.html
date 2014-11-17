@@ -26,7 +26,10 @@
                 
                 <div class="form-group"
                      ng-class="{ 'has-error' :
-                        registrationRadioForm.password.$error.passwordVerify || registrationRadioForm.password.$invalid }">
+                        registrationRadioForm.password.$error.passwordVerify
+                        || registrationRadioForm.confirmPassword.$error.passwordVerify
+                        || registrationRadioForm.password.$invalid }"
+                    >
                     <label class="col-lg-2 control-label">Пароль</label>
                     <div class="col-sm-10">
                         <input type="password" class="form-control input-sm"
@@ -50,6 +53,19 @@
                     </div>
                 </div>
                 
+                <div class="form-group margint20">
+                    <div class="col-sm-offset-2 col-sm-1">
+                        <img ng-src="{{registration.captchaImageUrl}}" alt="captcha" class="img-rounded" />
+                    </div>
+                    <div class="col-sm-1">
+                        <input type="text" value="{{registration.captchaToken}}" ng-model="registration.captchaToken" />
+                        <input type="text" ng-model="registration.captcha" class="form-control input-sm">
+                    </div>
+                    <div class="col-sm-1">
+                        <a ng-click="updateCaptchaCall()" class="glyphicon glyphicon-refresh refresh-captcha"></a>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <div class="col-lg-2 col-lg-offset-3 margint15">
                         <input type="submit" value="Регистрация"
