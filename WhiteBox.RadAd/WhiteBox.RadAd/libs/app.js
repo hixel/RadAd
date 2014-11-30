@@ -30,6 +30,8 @@ radadApp.config(function ($routeProvider) {
         .otherwise({ redirectTo: "/home" });
 });
 
+
+
 radadApp.controller("registrationController", function ($scope, registrationService, $route, $http) {
     $scope.result = {};
     $scope.registration = {};
