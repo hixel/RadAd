@@ -2,7 +2,7 @@
     var radadApp = angular.module("radad");
 
     var registrationService = function($http, $q) {
-        var registrateRadio = function(registrateRadioModel) {
+        var _registrateRadio = function(registrateRadioModel) {
 
             var deferred = $q.defer();
 
@@ -19,7 +19,7 @@
         };
 
         return {
-            registrateRadio: registrateRadio
+            registrateRadio: _registrateRadio
         };
     };
     

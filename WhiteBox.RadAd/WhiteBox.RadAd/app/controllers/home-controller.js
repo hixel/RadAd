@@ -1,5 +1,5 @@
 ﻿(function () {
-    var radadApp = angular.module("radad", ["ngRoute"]);
+    var radadApp = angular.module("radad");
 
     var homeController = function($scope, $http) {
         $scope.freq = 1;
