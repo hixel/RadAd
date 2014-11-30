@@ -241,11 +241,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="libs\controller\migration-controller.js" />
-    <Content Include="libs\directive\password-verify.js" />
-    <Content Include="libs\factory\registration-service.js" />
-    <Content Include="libs\home.js" />
-    <Content Include="libs\factory\migration-service.js" />
+    <Content Include="libs\controllers\migration-controller.js" />
+    <Content Include="libs\directives\password-verify.js" />
+    <Content Include="libs\services\registration-service.js" />
+    <Content Include="libs\app.js" />
+    <Content Include="libs\services\migration-service.js" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
