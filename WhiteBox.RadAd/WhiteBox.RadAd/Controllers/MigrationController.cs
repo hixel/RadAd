@@ -19,7 +19,7 @@
         {
             var model = new MigrationModel();
 
-            var migrationRepository = new BaseRepository<Entities.Migration.Migration>();
+            var migrationRepository = new BaseRepository<Kernel.Entities.Migration.Migration>();
 
             model.ProducedMigrations = migrationRepository.GetAll()
                 .Select(x => x.Version)

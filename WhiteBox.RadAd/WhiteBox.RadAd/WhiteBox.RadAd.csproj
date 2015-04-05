@@ -211,12 +211,10 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MigrationController.cs" />
     <Compile Include="Controllers\Registration\RegistrationController.cs" />
-    <Compile Include="Entities\Migration\Migration.cs" />
     <Compile Include="Entities\User\User.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Map\Migration\MigrationMap.cs" />
     <Compile Include="Map\User\UserMap.cs" />
     <Compile Include="Migrations\Migration_1.cs" />
     <Compile Include="Migrations\Version_20141106\Migration_20141106.cs" />
@@ -1068,7 +1066,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WhiteBox.Kernel\WhiteBox.Kernel.csproj">
+    <ProjectReference Include="..\..\..\WhiteBox.Kernel\WhiteBox.Kernel.csproj">
       <Project>{cf789d27-aae3-4ad6-a177-30d2e22bb460}</Project>
       <Name>WhiteBox.Kernel</Name>
     </ProjectReference>
